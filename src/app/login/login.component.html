@@ -1,0 +1,62 @@
+<div class="login-wrapper">
+    <div class="container">
+        <div class="bxl-logo">
+            <img src="../../assets/images/bioxcel-logo.png" alt="">
+        </div>
+        
+        <div class="login-box">
+            <div class="login-box-inner">
+                <div class="login-logo">
+                    <img src="./assets/images/logo.png" alt="" />
+                </div>
+                <p>Please Login</p>
+
+                <div class="alert alert-danger" *ngIf="error=='true'">
+                    {{errorMessage}}
+                </div>
+                <div class="loading-custom" *ngIf="loading">
+                    <img src="./assets/images/loader_small.gif" />&nbsp;Loading...
+                </div>
+
+                <form (ngSubmit)="login()" autocomplete="nope" class="form-signin" [formGroup]="loginForm">
+                    <div class="form-box">
+                        <div class="mb-4">
+                            <div class="input-group">
+                                <span>
+                                    <img src="../../assets/images/user-avatar.svg" alt="">
+                                </span>
+                                <input type="text" name="email" placeholder="User Id" formControlName="email"
+                                    id="input-email" class="form-control" autocomplete="off">
+                            </div>
+
+                            <span *ngIf="email && email.invalid && email.touched" class="text-danger">Email is
+                                required</span>
+                        </div>
+                        <div class="mb-4">
+                            <div class="input-group">
+                                <span>
+                                    <img src="../../assets/images/lock.svg" alt="">
+                                </span>
+                                <input type="password" name="password" placeholder="Password" formControlName="password"
+                                    id="input-password" class="form-control">
+                            </div>
+
+                            <span *ngIf="password && password.invalid && password.touched" class="text-danger">Password
+                                is
+                                required</span>
+                        </div>
+                        <div class="text-center">
+                            <button class="mt-5 btn" [disabled]="loginForm.invalid">
+                                <i class="bi bi-box-arrow-in-right"></i> Sign In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- <div class="create-account">
+                <span>Forget Password</span>
+            </div> -->
+
+        </div>
+    </div>
+</div>
