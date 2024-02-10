@@ -14,12 +14,11 @@ node(){
     }
     stage('Build') {
         nodejs('nodejs') {
-            sh 'npm update'
+            // sh 'npm update'
             sh 'npm run build'
             //sh 'npm cache clean'
             echo "Build completed"
-        }
-        
+        }        
     }
 
     stage('Package Build') {
@@ -44,6 +43,6 @@ node('awsnode') {
 
     echo 'Copy'
     sh "yes | sudo cp -R bundle.tar.gz /var/www/html && cd /var/www/html && sudo tar -xvf bundle.tar.gz"
-        // sh "yes | sudo cp -R bundle.tar.gz /var/www && cd /var/www && sudo tar -xvf bundle.tar.gz"
+    // sh "yes | sudo cp -R bundle.tar.gz /var/www && cd /var/www && sudo tar -xvf bundle.tar.gz"
     echo 'Copy completed'
 }
